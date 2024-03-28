@@ -1,0 +1,41 @@
+{
+  "name": "elipsisdev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "WoozyStudio <woozystudiocontact@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "repository": {
+    "url": "https://github.com/elipsisdev/elipsisdev.git"
+  },
+  "bugs": {
+    "url": "https://github.com/elipsisdev/elipsisdev/issues"
+  },
+  "homepage": "https://github.com/elipsisdev/elipsisdev#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@discordjs/rest": "2.2.0",
+    "@naval-base/ms": "3.1.0",
+    "@woozystudio/utilities": "1.0.4",
+    "colors": "1.4.0",
+    "discord.js": "14.14.1",
+    "dotenv": "16.4.5",
+    "fs": "0.0.1-security",
+    "glob": "10.3.12",
+    "mongoose": "8.2.4",
+    "nodemon": "3.1.0",
+    "path": "0.12.7",
+    "prettier": "^3.2.5",
+    "uuid": "9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "20.11.30",
+    "discord-api-types": "0.37.77",
+    "husky": "9.0.11",
+    "typescript": "^5.4.3"
+  }
+}
