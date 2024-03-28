@@ -6,7 +6,7 @@
   "author": "WoozyStudio <woozystudiocontact@gmail.com>",
   "license": "UNLICENSED",
   "private": true,
-  "type": "module",
+  "type": "commonjs",
   "repository": {
     "url": "https://github.com/elipsisdev/elipsisdev.git"
   },
