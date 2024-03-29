@@ -1,6 +1,7 @@
 enum Category {
     Utilities = "Utilities",
-    Development = "Development"
+    Development = "Development",
+    Information = "Information"
 }
 
 export default Category;
