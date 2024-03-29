@@ -20,6 +20,9 @@ export default class InteractionCreate extends Event {
         //@ts-ignore
         if(!command) return interaction.reply({ content: "outdated command", ephemeral: true }) && this.client.commands.delete(interaction.commandName);
 
+        if(command.development && !this.client.config.developers.includes(interaction.user.id))
+            return interaction.reply({ content: "❌ `|` This command is only for developers!" });
+
         const { cooldowns } = this.client;
         if(!cooldowns.has(command.name)) cooldowns.set(command.name, new Collection());
 
