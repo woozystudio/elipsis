@@ -5,6 +5,11 @@
   "main": "index.js",
   "author": "WoozyStudio <woozystudiocontact@gmail.com>",
   "license": "UNLICENSED",
+  "scripts": {
+    "worf:start": "cd apps/worf && npm run start",
+    "worf:dev": "cd apps/worf && npm run dev",
+    "worf:build": "cd apps/worf && npm run build"
+  },
   "private": true,
   "type": "module",
   "repository": {
