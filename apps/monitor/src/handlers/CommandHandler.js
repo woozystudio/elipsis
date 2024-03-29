@@ -1,5 +1,5 @@
 const { REST, Routes } = require('discord.js');
-const config  = require('../../config/monitor.config.js');
+const config  = require('../../../../config/monitor.config.js');
 const fs = require('fs');
 require('colors');
 
