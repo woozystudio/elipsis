@@ -13,6 +13,7 @@ export default class Command implements ICommand {
     userPermissions: bigint;
     dmPermissions: boolean;
     cooldown: number;
+    development: boolean;
 
     constructor(client: WorfClient, options: ICommandOptions) {
         this.client = client;
@@ -23,6 +24,7 @@ export default class Command implements ICommand {
         this.userPermissions = options.userPermissions;
         this.dmPermissions = options.dmPermissions;
         this.cooldown = options.cooldown;
+        this.development = options.development;
     }
 
     Execute(interaction: ChatInputCommandInteraction<CacheType>): void {
