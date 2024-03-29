@@ -1,12 +1,12 @@
 {
   "name": "elipsis",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "author": "WoozyStudio <woozystudiocontact@gmail.com>",
   "license": "UNLICENSED",
   "private": true,
-  "type": "commonjs",
+  "type": "module",
   "repository": {
     "url": "https://github.com/woozystudio/elipsis.git"
   },
