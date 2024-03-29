@@ -1,0 +1,12 @@
+{
+  "name": "@elipsis/docs",
+  "version": "0.0.1",
+  "description": "",
+  "author": "WoozyStudio <woozystudiocontact@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
