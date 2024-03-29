@@ -31,7 +31,7 @@ export default class Ready extends Event {
             body: this.GetJson(this.client.commands.filter(command => command.development))
         });
 
-        console.log(`Successfully loaded ${devCommands.length} development application commands.`.blue)
+        console.log(`Successfully loaded ${devCommands.length} development application commands.`.red)
     }
 
     private GetJson(commands: Collection<string, Command>): object[] {
