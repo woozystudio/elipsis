@@ -5,4 +5,6 @@ export default interface IConfig {
     developmentToken: string;
     developmentBotId: string;
     developers: string[];
+    developmentMongooseURL: string;
+    mongooseURL: string;
 }
