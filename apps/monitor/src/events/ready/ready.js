@@ -1,4 +1,4 @@
-const { Client, Events, ActivityType, PresenceUpdateStatus } = require('discord.js');
+const { Client, Events, ActivityType } = require('discord.js');
 require('colors');
 
 module.exports = {
