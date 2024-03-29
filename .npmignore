@@ -10,3 +10,7 @@ logs/
 
 # Build files
 build/
+
+# Configuration
+*.config.js
+config/
