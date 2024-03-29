@@ -3,6 +3,8 @@ import path from "path";
 import { glob } from "glob";
 import WorfClient from "./Client";
 import Event from "./Event";
+import Command from "./Command";
+import SubCommand from "./SubCommand";
 
 export default class Handler implements IHandler {
     client: WorfClient;
@@ -28,6 +30,26 @@ export default class Handler implements IHandler {
             else this.client.on(event.name, execute);
 
             return delete require.cache[require.resolve(file)];
+        });
+    }
+
+    async LoadCommands() {
+        const files = (await glob(`build/commands/**/*.js`)).map(filePath => path.resolve(filePath));
+
+        files.map(async (file: string) => {
+            const command: Command | SubCommand = new(await import(file)).default(this.client);
+
+            if(!command.name)
+                return delete require.cache[require.resolve(file)] && console.log(`${file.split("/").pop()} does not have a valid name.`);
+
+            if(command instanceof SubCommand)
+                return this.client.subCommands.set(command.name, command);
+            
+            this.client.commands.set(command.name, command as Command);
+
+            return delete require.cache[require.resolve(file)]
+
+            
         });
     }
 }
