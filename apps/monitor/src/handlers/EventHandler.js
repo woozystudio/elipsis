@@ -4,7 +4,7 @@ require('colors');
 function EventsLoader(client) {
     const folders = fs.readdirSync('./apps/monitor/src/events');
     for (const folder of folders) {
-        const files = fs.readdirSync(`./src/apps/monitor/src/events/${folder}`).filter((file) => file.endsWith('.js'));
+        const files = fs.readdirSync(`./apps/monitor/src/events/${folder}`).filter((file) => file.endsWith('.js'));
 
         for (const file of files) {
             const event = require(`../events/${folder}/${file}`);
