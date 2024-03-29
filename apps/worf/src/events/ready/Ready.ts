@@ -16,15 +16,22 @@ export default class Ready extends Event {
     async Execute() {
         console.log(`Logged as ${this.client.user?.tag}`.green);
 
+        const clientId = this.client.development ? this.client.config.developmentBotId : this.client.config.botId;
         const rest = new REST().setToken(this.client.config.token);
 
-        const commands: object[] = this.GetJson(this.client.commands);
+        if(!this.client.development) {
+            const globalCommands: any = await rest.put(Routes.applicationCommands(clientId), {
+                body: this.GetJson(this.client.commands.filter(command => !command.development))
+            });
 
-        const setCommands: any = await rest.put(Routes.applicationGuildCommands(this.client.config.discordClientId, this.client.config.guildId), {
-            body: commands
+            console.log(`Successfully loaded ${globalCommands.length} global application commands.`.yellow)
+        }
+
+        const devCommands: any = await rest.put(Routes.applicationGuildCommands(clientId, this.client.config.developmentGuildId), {
+            body: this.GetJson(this.client.commands.filter(command => command.development))
         });
 
-        console.log(`Successfully set ${setCommands.length} commands!`.yellow);
+        console.log(`Successfully loaded ${devCommands.length} development application commands.`.blue)
     }
 
     private GetJson(commands: Collection<string, Command>): object[] {
