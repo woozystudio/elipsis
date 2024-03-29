@@ -19,6 +19,3 @@ config/
 # IDE
 .vscode/
 .idea/
-
-# Miscellaneous
-.github/
