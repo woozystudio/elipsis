@@ -1,12 +1,12 @@
 const { REST, Routes } = require('discord.js');
-const config  = require('../../config/monitor.config.js');
+const config  = require('../../../../config/monitor.config.js');
 const fs = require('fs');
 require('colors');
 
 async function CommandsLoader(client) {
-    const commandFolders = fs.readdirSync(`./src/commands`);
+    const commandFolders = fs.readdirSync(`./apps/monitor/src/commands`);
         for (const folder of commandFolders) {
-            const commandFiles = fs.readdirSync(`./src/commands/${folder}`).filter((file) => file.endsWith('.js'));
+            const commandFiles = fs.readdirSync(`./apps/monitor/src/commands/${folder}`).filter((file) => file.endsWith('.js'));
 
             const { commands, commandArray } = client;
             for (const file of commandFiles) {
