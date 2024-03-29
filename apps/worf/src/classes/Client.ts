@@ -1,9 +1,11 @@
 import { Client } from "discord.js";
 import IClient from "../interfaces/Client";
 import IConfig from "../interfaces/Config";
+import Handler from "./Handler";
 
 export default class WorfClient extends Client implements IClient
 {
+    handler: Handler;
     config: IConfig;
 
     constructor()
@@ -13,11 +15,16 @@ export default class WorfClient extends Client implements IClient
         });
 
         this.config = require(`../../../../config/worf.config.json`);
+        this.handler = new Handler(this);
     }
 
     Init(): void {
-        this.login(this.config.token)
-            .then(() => console.log("Logged in!"))
-            .catch((err) => console.error(err));
+        this.LoadHandlers();
+
+        this.login(this.config.token).catch((err) => console.error(err));
+    }
+
+    LoadHandlers(): void {
+        this.handler.LoadEvents();
     }
 }
