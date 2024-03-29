@@ -8,12 +8,12 @@
   "private": true,
   "type": "commonjs",
   "repository": {
-    "url": "https://github.com/elipsisdev/elipsisdev.git"
+    "url": "https://github.com/woozystudio/elelipsisipsisdev.git"
   },
   "bugs": {
-    "url": "https://github.com/elipsisdev/elipsisdev/issues"
+    "url": "https://github.com/woozystudio/elipsis/issues"
   },
-  "homepage": "https://github.com/elipsisdev/elipsisdev#readme",
+  "homepage": "https://github.com/woozystudio/elipsis#readme",
   "engines": {
     "node": ">=18.0.0"
   },
