@@ -1,5 +1,8 @@
 export default interface IConfig {
     token: string;
-    discordClientId: string;
-    guildId: string;
+    botId: string;
+    developmentGuildId: string;
+    developmentToken: string;
+    developmentBotId: string;
+    developers: string[];
 }
