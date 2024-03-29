@@ -4,8 +4,8 @@ import IConfig from "../interfaces/Config";
 import Handler from "./Handler";
 import Command from "./Command";
 import SubCommand from "./SubCommand";
-import 'colors';
 import { connect } from "mongoose";
+import 'colors';
 
 export default class WorfClient extends Client implements IClient
 {
@@ -42,7 +42,7 @@ export default class WorfClient extends Client implements IClient
         this.login(this.development ? this.config.developmentToken : this.config.token).catch((err) => console.error(err));
 
         connect(this.development ? this.config.developmentMongooseURL : this.config.mongooseURL)
-            .then(() => console.log("☁ Connected to MongoDB database successfully."))
+            .then(() => console.log("☁ Connected to MongoDB database successfully.".blue))
             .catch((err) => console.error(err));
     }
 
