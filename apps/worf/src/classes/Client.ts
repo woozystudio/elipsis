@@ -1,12 +1,17 @@
-import { Client } from "discord.js";
+import { Client, Collection } from "discord.js";
 import IClient from "../interfaces/Client";
 import IConfig from "../interfaces/Config";
 import Handler from "./Handler";
+import Command from "./Command";
+import SubCommand from "./SubCommand";
 
 export default class WorfClient extends Client implements IClient
 {
     handler: Handler;
     config: IConfig;
+    commands: Collection<string, Command>;
+    subCommands: Collection<string, SubCommand>;
+    cooldowns: Collection<string, Collection<string, number>>;
 
     constructor()
     {
@@ -16,6 +21,9 @@ export default class WorfClient extends Client implements IClient
 
         this.config = require(`../../../../config/worf.config.json`);
         this.handler = new Handler(this);
+        this.commands = new Collection();
+        this.subCommands = new Collection();
+        this.cooldowns = new Collection();
     }
 
     Init(): void {
@@ -26,5 +34,6 @@ export default class WorfClient extends Client implements IClient
 
     LoadHandlers(): void {
         this.handler.LoadEvents();
+        this.handler.LoadCommands();
     }
 }
