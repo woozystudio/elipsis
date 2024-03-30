@@ -1,8 +1,8 @@
 <p align="center">
   <!--
-  <img width="500" src="https://github.com/woozystudio/elipsis/assets/97055575/85af4fc3-d3a5-472d-9e39-072c034911f4">
+  <img width="400" src="https://github.com/woozystudio/elipsis/assets/97055575/85af4fc3-d3a5-472d-9e39-072c034911f4">
   -->
-  <img width="500" src="https://github.com/woozystudio/elipsis/assets/97055575/2ae2444a-3d21-4836-b54d-8d8ce009284e">
+  <img width="400" src="https://github.com/woozystudio/elipsis/assets/97055575/2ae2444a-3d21-4836-b54d-8d8ce009284e">
 </p>
 
 # Elipsis
