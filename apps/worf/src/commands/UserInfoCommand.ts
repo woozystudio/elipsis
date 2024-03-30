@@ -42,7 +42,7 @@ export default class UserInfoCommand extends Command {
                 .setAuthor({ iconURL: target?.displayAvatarURL(), name: `${target?.username}` })
                 .addFields(
                     { name: 'Date Created', value: `<t:${Math.floor(target?.createdTimestamp / 1000)}>` },
-                    { name: 'Date Created', value: `<t:${Math.floor(member?.joinedTimestamp / 1000)}>` },
+                    { name: 'Date Joined', value: `<t:${Math.floor(member?.joinedTimestamp / 1000)}>` },
                     { name: 'Roles', value: `${roles.join(' ')}` },
                     { name: 'Permissions', value: `${permissions.join(' ')}` },
                 )
