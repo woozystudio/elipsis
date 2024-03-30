@@ -68,7 +68,7 @@ export default class ChannelInfoCommand extends Command {
                     { name: 'Topic', value: `\`\`\`${(channel as TextChannel).topic || "No topic is set or unavailable" }\`\`\``, inline: false },
                     { name: 'Type', value: `\`\`\`${type}\`\`\``, inline: true },
                     { name: 'Parent', value: `\`\`\`${channels?.parent?.name}\`\`\``, inline: true },
-                    { name: 'Date created', value: `<t:${Math.floor(channels?.createdTimestamp / 1000)}:F>`, inline: false },
+                    { name: 'Date created', value: `<t:${Math.floor(channels?.createdTimestamp / 1000)}>`, inline: false },
                 )
                 interaction.reply({ embeds: [ChannelEmbed] });
             }
