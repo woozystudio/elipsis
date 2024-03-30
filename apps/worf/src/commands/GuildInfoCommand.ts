@@ -82,7 +82,7 @@ export default class GuildInfoCommand extends Command {
                     },
                     {
                         "name": "Date created",
-                        "value": `<t:${Math.floor(interaction.guild.createdTimestamp / 1000)}:F>`,
+                        "value": `<t:${Math.floor(interaction.guild.createdTimestamp / 1000)}>`,
                         "inline": true
                     }
                 ]
