@@ -18,7 +18,8 @@ export default class ChannelInfoCommand extends Command {
                 {
                     name: "channel",
                     description: "Select the channel you want to view.",
-                    type: ApplicationCommandOptionType.Channel
+                    type: ApplicationCommandOptionType.Channel,
+                    required: true
                 }
             ],
         });
