@@ -19,8 +19,7 @@ export default class SuggestCommand extends Command {
                     name: "suggestion",
                     description: "Write your suggestion here.",
                     type: ApplicationCommandOptionType.String,
-                    required: true,
-                    channelType: ChannelType.GuildText
+                    required: true
                 }
             ],
         });
@@ -49,14 +48,14 @@ export default class SuggestCommand extends Command {
                         sendMessage.react('👎')
                     })
                     
-                    interaction.reply({ content: "✅ `|` The suggestion system has been configured correctly!" });
+                    interaction.reply({ content: "✅ `|` The suggestion system has been configured correctly!", ephemeral: true });
                 } else {
-                    interaction.reply({ content: "❌ `|` You have not configured the suggestion system." });
+                    interaction.reply({ content: "❌ `|` You have not configured the suggestion system.", ephemeral: true });
                 }
             }
         } catch (err) {
             console.error(err);
-            interaction.reply({ content: "❌ `|` There was an error configuring the suggestion system." });
+            interaction.reply({ content: "❌ `|` There was an error configuring the suggestion system.", ephemeral: true });
         }
     }
 }
