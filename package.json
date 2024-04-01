@@ -9,9 +9,9 @@
     "worf:start": "cd apps/worf && npm run start",
     "worf:dev": "cd apps/worf && npm run dev",
     "worf:build": "cd apps/worf && npm run build",
-    "floop:start": "cd apps/floop && npm run start",
-    "floop:dev": "cd apps/floop && npm run dev",
-    "floop:build": "cd apps/floop && npm run build"
+    "wumpus:start": "cd apps/wumpus && npm run start",
+    "wumpus:dev": "cd apps/wumpus && npm run dev",
+    "wumpus:build": "cd apps/wumpus && npm run build"
   },
   "private": true,
   "type": "module",
