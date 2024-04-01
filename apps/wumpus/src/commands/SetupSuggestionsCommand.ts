@@ -1,4 +1,4 @@
-import { ApplicationCommandOptionType, ChatInputCommandInteraction, PermissionFlagsBits } from "discord.js";
+import { ApplicationCommandOptionType, CategoryChannel, ChannelType, ChatInputCommandInteraction, PermissionFlagsBits, TextChannel } from "discord.js";
 import WumpusClient from "../classes/Client";
 import Command from "../classes/Command";
 import Category from "../enums/Category";
@@ -19,16 +19,17 @@ export default class SuggestionSetupCommand extends Command {
                     name: "channel",
                     description: "Select the suggestion channel.",
                     type: ApplicationCommandOptionType.Channel,
-                    required: true
+                    required: true,
+                    channel_types: [ChannelType.GuildText]
                 }
             ],
         });
     }
 
     async Execute(interaction: ChatInputCommandInteraction) {
-        const suggestionChannel = interaction.options.getChannel('channel');
+        const suggestionChannel = interaction.options.getChannel('channel') as TextChannel;
 
-        try {
+        try {            
             if(suggestionChannel && interaction.guild) {
                 const data = await SuggestionSetup.findOneAndUpdate({ GuildID: interaction.guild.id }, {
                     Channel: suggestionChannel.id
@@ -37,12 +38,12 @@ export default class SuggestionSetupCommand extends Command {
                     new: true,
                     upsert: true
                 });
-
-                interaction.reply({ content: "✅ `|` The suggestion system has been configured correctly!" });
+                
+                interaction.reply({ content: "✅ `|` The suggestion system has been configured correctly!", ephemeral: true });
             }
         } catch (err) {
             console.error(err);
-            interaction.reply({ content: "❌ `|` There was an error configuring the suggestion system." });
+            interaction.reply({ content: "❌ `|` There was an error configuring the suggestion system.", ephemeral: true });
         }
     }
 }
