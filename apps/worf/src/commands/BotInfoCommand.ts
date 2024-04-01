@@ -27,7 +27,7 @@ export default class BotInfoCommand extends Command {
                 const UserEmbed = new EmbedBuilder()
                 .setColor(Color.Embed)
                 .setTitle(`${this.client.user?.username}`)
-                .setDescription(`Información del bot.`)
+                .setDescription(`Bot Information.`)
                 .setThumbnail(`${this.client.user?.displayAvatarURL({ size: 2048 })}`)
                 .setAuthor({ iconURL: this.client.user?.displayAvatarURL(), name: `${this.client.user?.username}` })
                 .addFields(
