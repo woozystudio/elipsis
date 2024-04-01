@@ -1,4 +1,4 @@
-import { Collection, Events, REST, Routes } from "discord.js";
+import { Collection, Events, REST, Routes, PresenceUpdateStatus } from "discord.js";
 import WumpusClient from "../../classes/Client";
 import Event from "../../classes/Event";
 import Command from "../../classes/Command";
@@ -15,6 +15,8 @@ export default class Ready extends Event {
 
     async Execute() {
         console.log(`Logged as ${this.client.user?.tag}`.green);
+
+        this.client.user?.setPresence({ status: PresenceUpdateStatus.Idle })
 
         const clientId = this.client.development ? this.client.config.developmentBotId : this.client.config.botId;
         const rest = new REST().setToken(this.client.config.token);
