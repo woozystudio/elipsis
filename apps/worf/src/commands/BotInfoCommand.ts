@@ -24,7 +24,7 @@ export default class BotInfoCommand extends Command {
             if(member) {
                 const permissions = member.permissions.toArray().map((perm) => `\`${perm}\``);
 
-                const UserEmbed = new EmbedBuilder()
+                const BotEmbed = new EmbedBuilder()
                 .setColor(Color.Embed)
                 .setTitle(`${this.client.user?.username}`)
                 .setDescription(`Bot Information.`)
@@ -38,7 +38,7 @@ export default class BotInfoCommand extends Command {
                     { name: 'Permissions', value: `${permissions.join(' ')}`, inline: false },
                 )
     
-                interaction.reply({ embeds: [UserEmbed] });
+                interaction.reply({ embeds: [BotEmbed] });
             }
         } else {
             throw new Error("CommandError: An error occurred in BotInfo command.")
