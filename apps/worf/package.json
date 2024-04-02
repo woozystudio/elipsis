@@ -11,7 +11,7 @@
     "dev:noclean": "npm run build && node build/index.js --development"
   },
   "author": "WoozyStudio <woozystudiocontact@gmail.com>",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": true,
   "engines": {
     "node": ">=18.0.0"

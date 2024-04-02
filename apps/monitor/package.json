@@ -7,7 +7,7 @@
     "start": "nodemon src/index.js"
   },
   "author": "WoozyStudio <woozystudiocontact@gmail.com>",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": true,
   "engines": {
     "node": ">=18.0.0"
