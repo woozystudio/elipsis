@@ -4,8 +4,7 @@ let ticketSetup = new Schema({
     GuildID: String,
     Channel: String,
     Category: String,
-    Description: String,
-    Ping: String
+    Description: String
 });
 
 export default model("TicketSetup", ticketSetup);

@@ -31,12 +31,6 @@ export default class SetupTicketsCommand extends Command {
                     channel_types: [ChannelType.GuildCategory]
                 },
                 {
-                    name: "ping",
-                    description: "Select the role that will be mentioned when a new ticket is created.",
-                    type: ApplicationCommandOptionType.Role,
-                    required: false
-                },
-                {
                     name: "description",
                     description: "Write the description of the ticket creation embed.",
                     type: ApplicationCommandOptionType.String,
@@ -49,15 +43,13 @@ export default class SetupTicketsCommand extends Command {
     async Execute(interaction: ChatInputCommandInteraction) {
         const channel = interaction.options.getChannel('channel') as TextChannel;
         const category = interaction.options.getChannel('category') as CategoryChannel;
-        const ping = interaction.options.getRole('ping');
         const description = interaction.options.getString('description') || "\`❓\` **What are tickets?**\nTickets are a very simple way for users to contact the server administration team. If you need to create a ticket for any question or doubt, or you need to report a user for bad behavior on the server, this is the place for you.\n \n\`🎫\` **Ticket Types**\nOn the server there are 2 types of tickets, general tickets and report tickets. General tickets are for questions or doubts about the server or something else related. And the report tickets are for reporting users for bad behavior, for example, or server bugs.\n \n\`🔨\` **Important**\nAny misuse of tickets is punishable, so be careful not to create too many tickets unnecessarily, or else you will be penalized.";
     
-        if(channel && category && ping && description && interaction.guild) {
+        if(channel && category && description && interaction.guild) {
             try {
                 const data = await TicketSetup.findOneAndUpdate({ GuildID: interaction.guild.id }, {
                     Channel: channel.id,
                     Category: category.id,
-                    Ping: ping.id,
                     Description: description
                 },
                 {
