@@ -4,7 +4,6 @@ let ticketSetup = new Schema({
     GuildID: String,
     Channel: String,
     Category: String,
-    Everyone: String,
     Description: String,
     Ping: String
 });
