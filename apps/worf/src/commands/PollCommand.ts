@@ -3,6 +3,7 @@ import WorfClient from "../classes/Client";
 import Command from "../classes/Command";
 import Category from "../enums/Category";
 import Color from "../enums/Color";
+import Symbols from "../enums/Symbols";
 
 export default class PollCommand extends Command {
     constructor(client: WorfClient) {
@@ -63,7 +64,7 @@ export default class PollCommand extends Command {
         .setColor(Color.Embed)
         .setTimestamp()
 
-        await interaction.reply({ content: "✅ `|` The poll has been sent successfully!", ephemeral: true });
+        await interaction.reply({ content: `${Symbols.Success} The poll has been sent successfully!`, ephemeral: true });
 
         if(channel) {
             const Channel = await this.client.channels.cache.get(channel.id) as TextChannel;
