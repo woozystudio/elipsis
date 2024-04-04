@@ -13,7 +13,7 @@ export default class PollCommand extends Command {
             category: Category.Utilities,
             userPermissions: PermissionFlagsBits.UseApplicationCommands,
             dmPermissions: true,
-            development: true,
+            development: false,
             cooldown: 2,
             options: [
                 {
