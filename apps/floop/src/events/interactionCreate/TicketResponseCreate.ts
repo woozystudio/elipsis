@@ -4,6 +4,7 @@ import Event from "../../classes/Event";
 import TicketSetup from "../../database/models/TicketSetup";
 import Ticket from "../../database/models/Ticket";
 import Color from "../../enums/Color";
+import Symbols from "../../enums/Symbols";
 
 export default class InteractionCreate extends Event {
     constructor(client: FloopClient) {
@@ -25,7 +26,7 @@ export default class InteractionCreate extends Event {
                 
                 if(!data) return;
                 if(!buttons.customId.includes("openticket")) return;
-                if(!buttons.guild.members.me?.permissions.has(PermissionFlagsBits.ManageChannels)) return buttons.reply({ content: "❌ `|` The bot needs permission from `ManageChannels` to do this action." });
+                if(!buttons.guild.members.me?.permissions.has(PermissionFlagsBits.ManageChannels)) return buttons.reply({ content: `${Symbols.Error} The bot needs permission from \`ManageChannels\` to do this action.` });
                 
                 const everyoneRoleId = buttons.guild.roles.everyone;
     
@@ -70,7 +71,7 @@ export default class InteractionCreate extends Event {
     
                             channel.send({ embeds: [embed], components: [new ActionRowBuilder<ButtonBuilder>(button)] });
     
-                            buttons.reply({ content: `✅ \`|\` Your ticket has been successfully created in <#${channel.id}>.`, ephemeral: true })
+                            buttons.reply({ content: `${Symbols.Success} Your ticket has been successfully created in <#${channel.id}>.`, ephemeral: true })
                         }
                     });
                 } catch (err) {
