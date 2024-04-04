@@ -1,7 +1,6 @@
 {
 	"recommendations": [
 		"esbenp.prettier-vscode",
-		"mikestead.dotenv",
 		"github.github-actions"
 	]
 }
