@@ -4,6 +4,7 @@ import Command from "../classes/Command";
 import Category from "../enums/Category";
 import TicketSetup from "../database/models/TicketSetup";
 import Color from "../enums/Color";
+import Symbols from "../enums/Symbols";
 
 export default class SetupTicketsCommand extends Command {
     constructor(client: FloopClient) {
@@ -72,14 +73,14 @@ export default class SetupTicketsCommand extends Command {
                 const guildChannel = interaction.guild.channels.cache.get(channel.id) as TextChannel;
     
                 await guildChannel.send({ embeds: [TicketsEmbed], components: [new ActionRowBuilder<ButtonBuilder>(Buttons)] });
-                interaction.reply({ content: `✅ \`|\` The tickets panel has been successfully created.`, ephemeral: false });
+                interaction.reply({ content: `${Symbols.Success} The tickets panel has been successfully created.`, ephemeral: false });
                 
             } catch (err) {
                 console.error(err);
                 throw new Error("CommandError: An error occurred in SetupTickets command.")
             }
         } else {
-            interaction.reply({ content: `❌ \`|\` An error has occurred, try again later...`, ephemeral: true });
+            interaction.reply({ content: `${Symbols.Error} An error has occurred, try again later...`, ephemeral: true });
         }
 
     }
