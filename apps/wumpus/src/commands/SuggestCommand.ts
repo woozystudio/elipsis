@@ -3,6 +3,7 @@ import WumpusClient from "../classes/Client";
 import Command from "../classes/Command";
 import Category from "../enums/Category";
 import SuggestionSetup from "../database/models/Suggestion";
+import Symbols from "../enums/Symbols";
 
 export default class SuggestCommand extends Command {
     constructor(client: WumpusClient) {
@@ -48,14 +49,14 @@ export default class SuggestCommand extends Command {
                         sendMessage.react('👎')
                     })
                     
-                    interaction.reply({ content: "✅ `|` The suggestion system has been configured correctly!", ephemeral: true });
+                    interaction.reply({ content: `${Symbols.Success} The suggestion system has been configured correctly!`, ephemeral: true });
                 } else {
-                    interaction.reply({ content: "❌ `|` You have not configured the suggestion system.", ephemeral: true });
+                    interaction.reply({ content: `${Symbols.Error} You have not configured the suggestion system.`, ephemeral: true });
                 }
             }
         } catch (err) {
             console.error(err);
-            interaction.reply({ content: "❌ `|` There was an error configuring the suggestion system.", ephemeral: true });
+            interaction.reply({ content: `${Symbols.Error} There was an error configuring the suggestion system.`, ephemeral: true });
         }
     }
 }

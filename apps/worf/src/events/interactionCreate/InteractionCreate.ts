@@ -2,6 +2,7 @@ import { ChatInputCommandInteraction, Collection, Events } from "discord.js";
 import WorfClient from "../../classes/Client";
 import Event from "../../classes/Event";
 import Command from "../../classes/Command";
+import Symbols from "../../enums/Symbols";
 
 export default class InteractionCreate extends Event {
     constructor(client: WorfClient) {
@@ -21,7 +22,7 @@ export default class InteractionCreate extends Event {
         if(!command) return interaction.reply({ content: "outdated command", ephemeral: true }) && this.client.commands.delete(interaction.commandName);
 
         if(command.development && !this.client.config.developers.includes(interaction.user.id))
-            return interaction.reply({ content: "❌ `|` This command is only for developers!", ephemeral: true });
+            return interaction.reply({ content: `${Symbols.Error} This command is only for developers!`, ephemeral: true });
 
         const { cooldowns } = this.client;
         if(!cooldowns.has(command.name)) cooldowns.set(command.name, new Collection());
@@ -31,7 +32,7 @@ export default class InteractionCreate extends Event {
         const cooldownAmount = (command.cooldown || 3) * 1000;
 
         if(timestamps.has(interaction.user.id) && (now < (timestamps.get(interaction.user.id) || 0) + cooldownAmount))
-            return interaction.reply({ content: `❌ \`|\` Please wait another \`${((((timestamps.get(interaction.user.id) || 0) + cooldownAmount) - now) / 1000).toFixed(1)}\` seconds to run this command.`, ephemeral: true })
+            return interaction.reply({ content: `${Symbols.Error} Please wait another \`${((((timestamps.get(interaction.user.id) || 0) + cooldownAmount) - now) / 1000).toFixed(1)}\` seconds to run this command.`, ephemeral: true })
 
         timestamps.set(interaction.user.id, now);
         setTimeout(() => timestamps.delete(interaction.user.id), cooldownAmount);
