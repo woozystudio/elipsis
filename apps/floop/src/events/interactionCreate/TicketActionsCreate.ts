@@ -27,6 +27,7 @@ export default class InteractionCreate extends Event {
                 if(data) {
                     switch (buttons.customId) {
                         case "close":
+                            if (!buttons.memberPermissions.has(PermissionFlagsBits.ManageChannels)) return buttons.reply({ content: `${Symbols.Error} You do not have permission to close this ticket.`, ephemeral: true });
                             if (data.Closed === true) return buttons.reply({ content: `${Symbols.Success} This ticket is already getting deleted...`, ephemeral: true });
 
                             await Ticket.updateOne({ ChannelID: buttons.channel.id }, { Closed: true });
@@ -47,7 +48,7 @@ export default class InteractionCreate extends Event {
                             break;
                         
                         case "claim":
-                            if (!buttons.memberPermissions.has(PermissionFlagsBits.ManageChannels)) return buttons.reply({ content: `${Symbols.Error} You do not have permission to do this.`, ephemeral: true });
+                            if (!buttons.memberPermissions.has(PermissionFlagsBits.ManageChannels)) return buttons.reply({ content: `${Symbols.Error} You are not allowed to perform the claiming action.`, ephemeral: true });
                             if (data.Claimed == true) return buttons.reply({ content: `${Symbols.Error} This ticket is already claimed by <@${data.ClaimedBy}>.`, ephemeral: true });
 
                             await Ticket.updateOne({ ChannelID: buttons.channel.id }, { Claimed: true, ClaimedBy: buttons.user.id });
