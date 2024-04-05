@@ -5,7 +5,7 @@ import Category from "../enums/Category";
 import Color from "../enums/Color";
 import Symbols from "../enums/Symbols";
 
-export default class BotInfoCommand extends Command {
+export default class BanCommand extends Command {
     constructor(client: NellyClient) {
         super(client, {
             name: "ban",
