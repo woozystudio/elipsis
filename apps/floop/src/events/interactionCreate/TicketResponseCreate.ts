@@ -76,7 +76,7 @@ export default class InteractionCreate extends Event {
                                 .setStyle(ButtonStyle.Secondary)
                             )
     
-                            channel.send({ embeds: [embed], components: [new ActionRowBuilder<ButtonBuilder>(button)] });
+                            channel.send({ content: `<@&${data.PingMods}> ${buttons.user}`, embeds: [embed], components: [new ActionRowBuilder<ButtonBuilder>(button)] });
     
                             buttons.reply({ content: `${Symbols.Success} Your ticket has been successfully created in <#${channel.id}>.`, ephemeral: true })
                         }
