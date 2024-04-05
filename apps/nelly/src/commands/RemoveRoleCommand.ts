@@ -13,7 +13,7 @@ export default class RemoveRoleCommand extends Command {
             category: Category.Utilities,
             userPermissions: PermissionFlagsBits.ManageRoles,
             dmPermissions: true,
-            development: true,
+            development: false,
             cooldown: 2,
             options: [
                 {
