@@ -1,9 +1,10 @@
-import { ApplicationCommandOptionType, ChannelType, ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits, TextChannel } from "discord.js";
+import { ApplicationCommandOptionType, ChannelType, ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits, TextChannel, ThreadChannel } from "discord.js";
 import WumpusClient from "../classes/Client";
 import Command from "../classes/Command";
 import Category from "../enums/Category";
 import SuggestionSetup from "../database/models/Suggestion";
 import Symbols from "../enums/Symbols";
+import Color from "../enums/Color";
 
 export default class SuggestCommand extends Command {
     constructor(client: WumpusClient) {
@@ -43,11 +44,45 @@ export default class SuggestCommand extends Command {
                     .setColor("Yellow")
                     .setTimestamp()
     
-                    const reaction = this.client.channels.cache.get(data.Channel) as TextChannel;
-                    reaction.send({ embeds: [SuggestionEmbed] }).then(sendMessage => {
-                        sendMessage.react('👍')
-                        sendMessage.react('👎')
-                    })
+                    const message = this.client.channels.cache.get(data.Channel) as TextChannel;
+
+                    if(data.Ping != undefined) {
+                        message.send({ content: `<@&${data.Ping}>`, embeds: [SuggestionEmbed] }).then(async sendMessage => {
+                            sendMessage.react('👍');
+                            sendMessage.react('👎');
+
+                            await sendMessage.startThread({
+                                name: "Discussion"
+                            }).then((thread) => {
+                                const ThreadEmbed = new EmbedBuilder()
+                                .setDescription("`📌` Within this thread you can start a conversation about this suggestion!")
+                                .setColor(Color.Success)
+
+                                thread.send({ embeds: [ThreadEmbed] });
+                                thread.setRateLimitPerUser(5);
+                            });
+                        }).catch(err => {
+                            console.error(err);
+                        });
+                    } else if(data.Ping === undefined) {
+                        message.send({ embeds: [SuggestionEmbed] }).then(async sendMessage => {
+                            sendMessage.react('👍');
+                            sendMessage.react('👎');
+
+                            await sendMessage.startThread({
+                                name: "Discussion"
+                            }).then((thread) => {
+                                const ThreadEmbed = new EmbedBuilder()
+                                .setDescription("`📌` Within this thread you can start a conversation about this suggestion!")
+                                .setColor(Color.Success)
+
+                                thread.send({ embeds: [ThreadEmbed] });
+                                thread.setRateLimitPerUser(5);
+                            });
+                        }).catch(err => {
+                            console.error(err);
+                        });;
+                    }
                     
                     interaction.reply({ content: `${Symbols.Success} The suggestion system has been configured correctly!`, ephemeral: true });
                 } else {
