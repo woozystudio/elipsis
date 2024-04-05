@@ -13,7 +13,7 @@ export default class SuggestionSetupCommand extends Command {
             category: Category.Utilities,
             userPermissions: PermissionFlagsBits.ManageGuild,
             dmPermissions: true,
-            development: true,
+            development: false,
             cooldown: 2,
             options: [
                 {
