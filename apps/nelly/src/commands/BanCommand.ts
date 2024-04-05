@@ -13,7 +13,7 @@ export default class BotInfoCommand extends Command {
             category: Category.Moderation,
             userPermissions: PermissionFlagsBits.BanMembers,
             dmPermissions: true,
-            development: true,
+            development: false,
             cooldown: 2,
             options: [
                 {
