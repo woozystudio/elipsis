@@ -19,37 +19,49 @@ export default class InteractionCreate extends Event {
         if(interaction.isButton()) {
             const buttons = interaction as ButtonInteraction;
 
-            if(buttons.guild && buttons.member && buttons.channel) {
-                if(!buttons.customId.includes("close")) return;
-                const docs = await TicketSetup.findOne({ GuildId: buttons.guild.id });
+            if(buttons.guild && buttons.member && buttons.channel && buttons.memberPermissions ) {
+                if(!["close", "claim"].includes(buttons.customId)) return;
+
                 const data = await Ticket.findOne({ GuildID: buttons.guild.id });
                 if(!buttons.guild.members.me?.permissions.has(PermissionFlagsBits.ManageChannels)) return buttons.reply({ content: `${Symbols.Error} The bot needs permission from \`ManageChannels\` to do this action.` });
                 if(data) {
                     switch (buttons.customId) {
                         case "close":
                             if (data.Closed === true) return buttons.reply({ content: `${Symbols.Success} This ticket is already getting deleted...`, ephemeral: true });
-        
+
                             await Ticket.updateOne({ ChannelID: buttons.channel.id }, { Closed: true });
                             const DeletedTicket = new EmbedBuilder()
                             .setDescription(`The ticket will be deleted in 5s...`)
                             .setColor(Color.Danger)
-        
+
                             buttons.channel.send({ embeds: [DeletedTicket] });
-                            setTimeout(function () {
-                                if(buttons.channel) {
+                            setTimeout(async function () {
+                                if(buttons.channel && buttons.guild) {
                                     buttons.channel.delete();
+                                    await Ticket.deleteOne({ GuildID: buttons.guild.id }, { ChannelID: buttons.channel.id });
                                 }
                             }, 5000)
-        
+
                             buttons.reply({ content: `${Symbols.Success} Your ticket is being prepared for closing.` });
+
                             break;
                         
+                        case "claim":
+                            if (!buttons.memberPermissions.has(PermissionFlagsBits.ManageChannels)) return buttons.reply({ content: `${Symbols.Error} You do not have permission to do this.`, ephemeral: true });
+                            if (data.Claimed == true) return buttons.reply({ content: `${Symbols.Error} This ticket is already claimed by <@${data.ClaimedBy}>.`, ephemeral: true });
+
+                            await Ticket.updateOne({ ChannelID: buttons.channel.id }, { Claimed: true, ClaimedBy: buttons.user.id });
+
+                            const ClaimedEmbed = new EmbedBuilder()
+                            .setDescription(`From now on, ${buttons.member} will take care of this request.`)
+                            .setColor(Color.Success)
+
+                            buttons.reply({ embeds: [ClaimedEmbed] })
                         default:
                             break;
                     }
                 }
             }
         }
-
     }
 }
