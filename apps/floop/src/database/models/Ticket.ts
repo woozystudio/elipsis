@@ -7,6 +7,8 @@ let ticketSchema = new Schema({
     ChannelID: String,
     Closed: Boolean,
     Locked: Boolean,
+    Claimed: Boolean,
+    ClaimedBy: String
 });
 
 export default model("Ticket", ticketSchema);
