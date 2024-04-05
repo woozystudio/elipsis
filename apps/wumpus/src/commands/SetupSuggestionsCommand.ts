@@ -13,7 +13,7 @@ export default class SuggestionSetupCommand extends Command {
             category: Category.Utilities,
             userPermissions: PermissionFlagsBits.ManageGuild,
             dmPermissions: true,
-            development: false,
+            development: true,
             cooldown: 2,
             options: [
                 {
@@ -22,6 +22,12 @@ export default class SuggestionSetupCommand extends Command {
                     type: ApplicationCommandOptionType.Channel,
                     required: true,
                     channel_types: [ChannelType.GuildText]
+                },
+                {
+                    name: "ping",
+                    description: "Select a role to be mentioned when creating a suggestion.",
+                    type: ApplicationCommandOptionType.Role,
+                    required: false
                 }
             ],
         });
@@ -29,17 +35,29 @@ export default class SuggestionSetupCommand extends Command {
 
     async Execute(interaction: ChatInputCommandInteraction) {
         const suggestionChannel = interaction.options.getChannel('channel') as TextChannel;
+        const pingrole = interaction.options.getRole('ping');
 
         try {            
             if(suggestionChannel && interaction.guild) {
-                const data = await SuggestionSetup.findOneAndUpdate({ GuildID: interaction.guild.id }, {
-                    Channel: suggestionChannel.id
-                },
-                {
-                    new: true,
-                    upsert: true
-                });
-                
+                if(pingrole) {
+                    const data = await SuggestionSetup.findOneAndUpdate({ GuildID: interaction.guild.id }, {
+                        Channel: suggestionChannel.id,
+                        Ping: pingrole.id
+                    },
+                    {
+                        new: true,
+                        upsert: true
+                    });
+                } else {
+                    const data = await SuggestionSetup.findOneAndUpdate({ GuildID: interaction.guild.id }, {
+                        Channel: suggestionChannel.id
+                    },
+                    {
+                        new: true,
+                        upsert: true
+                    }); 
+                }
+
                 interaction.reply({ content: `${Symbols.Success} The suggestion system has been configured correctly!`, ephemeral: true });
             }
         } catch (err) {
