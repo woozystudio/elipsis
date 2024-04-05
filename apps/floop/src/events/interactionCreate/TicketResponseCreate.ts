@@ -23,6 +23,7 @@ export default class InteractionCreate extends Event {
                 const ticketId = Math.floor(Math.random() * 9000) + 10000;
         
                 const data = await TicketSetup.findOne({ GuildID: buttons.guild.id });
+                const docs = await Ticket.findOne({ GuildID: buttons.guild.id });
                 
                 if(!data) return;
                 if(!buttons.customId.includes("openticket")) return;
@@ -57,7 +58,7 @@ export default class InteractionCreate extends Event {
                                 Claimed: false
                             });
     
-                            const embed = new EmbedBuilder()
+                            const TicketEmbed = new EmbedBuilder()
                             .setTitle("Hi, Welcome to your Ticket!")
                             .setDescription("A staff member will be with you in a few moments, please be patient.\nWhile a staff member is assisting you, please comment your problem. Again, please be patient!")
                             .setColor(Color.Success)
@@ -75,8 +76,16 @@ export default class InteractionCreate extends Event {
                                 .setEmoji('📌')
                                 .setStyle(ButtonStyle.Secondary)
                             )
+
+                            const UserEmbed = new EmbedBuilder()
+                            .setDescription(`
+                                ¡Hello! \`👋\`
+                                We sent you this message from the **${buttons.guild.name}** server to remind you that you have opened a ticket! We are waiting for you in the channel: <#${channel.id}>. Thank you.
+                            `)
+                            .setColor(Color.Embed);
     
-                            channel.send({ content: `<@&${data.PingMods}> ${buttons.user}`, embeds: [embed], components: [new ActionRowBuilder<ButtonBuilder>(button)] });
+                            channel.send({ content: `<@&${data.PingMods}> ${buttons.user}`, embeds: [TicketEmbed], components: [new ActionRowBuilder<ButtonBuilder>(button)] });
+                            buttons.user.send({ embeds: [UserEmbed] }).catch((buttons) => buttons.channel?.send({ content: `${Symbols.Error} There was an error sending the reminder to the user.` }))
     
                             buttons.reply({ content: `${Symbols.Success} Your ticket has been successfully created in <#${channel.id}>.`, ephemeral: true })
                         }
