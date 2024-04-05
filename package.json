@@ -15,9 +15,9 @@
     "floop:start": "cd apps/floop && npm run start",
     "floop:dev": "cd apps/floop && npm run dev",
     "floop:build": "cd apps/floop && npm run build",
-    "pinky:start": "cd apps/pinky && npm run start",
-    "pinky:dev": "cd apps/pinky && npm run dev",
-    "pinky:build": "cd apps/pinky && npm run build"
+    "nelly:start": "cd apps/nelly && npm run start",
+    "nelly:dev": "cd apps/nelly && npm run dev",
+    "nelly:build": "cd apps/nelly && npm run build"
   },
   "private": true,
   "type": "module",
