@@ -13,7 +13,7 @@ export default class UntimeoutCommand extends Command {
             category: Category.Moderation,
             userPermissions: PermissionFlagsBits.ManageChannels,
             dmPermissions: true,
-            development: true,
+            development: false,
             cooldown: 2,
             options: [
                 {
