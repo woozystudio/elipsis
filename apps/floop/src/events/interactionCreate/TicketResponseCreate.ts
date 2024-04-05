@@ -54,6 +54,7 @@ export default class InteractionCreate extends Event {
                                 ChannelID: channel.id,
                                 Closed: false,
                                 Locked: false,
+                                Claimed: false
                             });
     
                             const embed = new EmbedBuilder()
@@ -66,6 +67,12 @@ export default class InteractionCreate extends Event {
                                 .setCustomId('close')
                                 .setLabel('Close')
                                 .setEmoji('🔒')
+                                .setStyle(ButtonStyle.Secondary),
+
+                                new ButtonBuilder()
+                                .setCustomId('claim')
+                                .setLabel('Claim')
+                                .setEmoji('📌')
                                 .setStyle(ButtonStyle.Secondary)
                             )
     
