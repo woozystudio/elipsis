@@ -66,7 +66,7 @@ export default class BotInfoCommand extends Command {
                 }
             }
         } else {
-            throw new Error("CommandError: An error occurred in Ban command.")
+            throw new Error("CommandError: An error occurred in Unban command.")
         }
     }
 }
