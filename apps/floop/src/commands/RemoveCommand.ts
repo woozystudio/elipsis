@@ -13,7 +13,7 @@ export default class SetupTicketsCommand extends Command {
             category: Category.Utilities,
             userPermissions: PermissionFlagsBits.ManageChannels,
             dmPermissions: true,
-            development: true,
+            development: false,
             cooldown: 2,
             options: [
                 {
