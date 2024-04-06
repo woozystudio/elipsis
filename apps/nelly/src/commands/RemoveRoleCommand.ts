@@ -11,8 +11,8 @@ export default class RemoveRoleCommand extends Command {
             name: "removerole",
             description: "Remove a role to a user on the server.",
             category: Category.Utilities,
-            userPermissions: PermissionFlagsBits.ManageRoles,
-            dmPermissions: true,
+            default_member_permissions: PermissionFlagsBits.ManageRoles,
+            dm_permissions: true,
             development: false,
             cooldown: 2,
             options: [
