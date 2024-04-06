@@ -71,15 +71,15 @@ export default class TempRoleCommand extends Command {
                 const interactionMember = interaction.member as GuildMember;
                 const bot = interaction.guild.members.me as GuildMember;
 
-                if(member.roles.highest.position >= interactionMember.roles.highest.position) return await interaction.reply({ content: `${Symbols.Error} You can't take action on ${target} since they have a higher role.`, ephemeral: false });
+                if(member.roles.highest.position >= interactionMember.roles.highest.position) return await interaction.reply({ content: `${Symbols.Error} You can't take action on ${target} since they have a higher role.`, ephemeral: true });
 
-                if(role?.position > bot.roles.highest.position) return await interaction.reply({ content: `${Symbols.Error} The role has a higher position than that of the bot.`, ephemeral: false });
+                if(role?.position > bot.roles.highest.position) return await interaction.reply({ content: `${Symbols.Error} The role has a higher position than that of the bot.`, ephemeral: true });
 
-                if(bot.roles.highest.position >= interactionMember.roles.highest.position) return await interaction.reply({ content: `${Symbols.Error} I can't take action on ${target} since they have a higher role.`, ephemeral: false });
+                if(bot.roles.highest.position >= interactionMember.roles.highest.position) return await interaction.reply({ content: `${Symbols.Error} I can't take action on ${target} since they have a higher role.`, ephemeral: true });
 
-                if(interaction.member.user.id === target.id) return await interaction.reply({ content: `${Symbols.Error} You cannot ban yourself from the server.`, ephemeral: false });
+                if(interaction.member.user.id === target.id) return await interaction.reply({ content: `${Symbols.Error} You cannot ban yourself from the server.`, ephemeral: true });
 
-                if(member.roles.cache.has(role.id)) return interaction.reply({ content: `${Symbols.Error} The user ${target} already has the role ${role}.`, ephemeral: false });
+                if(member.roles.cache.has(role.id)) return interaction.reply({ content: `${Symbols.Error} The user ${target} already has the role ${role}.`, ephemeral: true });
 
                 await interaction.guild.members.cache.get(target.id)?.roles.add(role.id);
 
