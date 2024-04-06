@@ -10,8 +10,8 @@ export default class RoleInfoCommand extends Command {
             name: "roleinfo",
             description: "Displays information about a role.",
             category: Category.Information,
-            userPermissions: PermissionFlagsBits.UseApplicationCommands,
-            dmPermissions: true,
+            default_member_permissions: PermissionFlagsBits.UseApplicationCommands,
+            dm_permissions: true,
             development: false,
             cooldown: 2,
             options: [
