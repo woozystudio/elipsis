@@ -68,7 +68,7 @@ export default class TempBanCommand extends Command {
 
             if(banUser) {
 
-                if(interaction.member.user.id === target.id) return await interaction.reply({ content: `${Symbols.Error} You cannot ban yourself from the server.` });
+                if(interaction.member.user.id === target.id) return await interaction.reply({ content: `${Symbols.Error} You cannot ban yourself from the server.`, ephemeral: true });
                 
                 const durationMs = duration * 1000;
                 const banExpiresAt = Math.floor((Date.now() + durationMs) / 1000);
@@ -101,7 +101,7 @@ export default class TempBanCommand extends Command {
                         .setColor(Color.Success)
                         .setDescription(`${Symbols.Success} <@${banUser.id}> was temporarily banned. The ban will be cancelled in <t:${banExpiresAt}:R> \n### Reason \n\`\`\`\n${reason}\n\`\`\``)
     
-                        await interaction.reply({ embeds: [InteractionEmbed], ephemeral: false });
+                        await interaction.reply({ embeds: [InteractionEmbed], ephemeral: true });
                     } catch (err) {
                         console.error(err);
                     }
@@ -111,7 +111,7 @@ export default class TempBanCommand extends Command {
                         .setColor(Color.Success)
                         .setDescription(`${Symbols.Success} <@${banUser.id}> was temporarily banned. The ban will be cancelled in <t:${banExpiresAt}:R>`)
     
-                        await interaction.reply({ embeds: [InteractionEmbed], ephemeral: false });
+                        await interaction.reply({ embeds: [InteractionEmbed], ephemeral: true });
                     } catch (err) {
                         console.error(err);
                     }
