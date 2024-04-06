@@ -62,11 +62,16 @@ export default class UntimeoutCommand extends Command {
             .setColor(Color.Danger)
             .setDescription(`${Symbols.Error} You do not have permissions to execute this command.`);
 
-            if(!interactionMember.permissions.has(PermissionFlagsBits.ModerateMembers)) return await interaction.reply({ embeds: [NoPermissions] });
-            if(!member) return await interaction.reply({ embeds: [UserMentionenNoValid] });
-            if(!member.kickable) return await interaction.reply({ embeds: [CannotModerateUser] });
-            if(interaction.user.id === member.id) return await interaction.reply({ embeds: [CannotModerateYourself] });
-            if(member.permissions.has(PermissionFlagsBits.Administrator)) return await interaction.reply({ embeds: [CannotWithAdminPerms] });
+            const CommunicationDisabled = new EmbedBuilder()
+            .setColor(Color.Danger)
+            .setDescription(`${Symbols.Error} The user ${target} is not in timeout.`);
+
+            if(member.isCommunicationDisabled() === false) return await interaction.reply({ embeds: [CommunicationDisabled], ephemeral: true });
+            if(!interactionMember.permissions.has(PermissionFlagsBits.ModerateMembers)) return await interaction.reply({ embeds: [NoPermissions], ephemeral: true });
+            if(!member) return await interaction.reply({ embeds: [UserMentionenNoValid], ephemeral: true });
+            if(!member.kickable) return await interaction.reply({ embeds: [CannotModerateUser], ephemeral: true });
+            if(interaction.user.id === member.id) return await interaction.reply({ embeds: [CannotModerateYourself], ephemeral: true });
+            if(member.permissions.has(PermissionFlagsBits.Administrator)) return await interaction.reply({ embeds: [CannotWithAdminPerms], ephemeral: true });
             
             member.timeout(null, reason);
 
