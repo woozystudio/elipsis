@@ -37,8 +37,15 @@ export default class BanCommand extends Command {
         const reason = interaction.options.getString('reason');
         
         if(target && interaction.guild) {
-            const member = await interaction.guild?.members.fetch(target.id);
+            const unknownMemberEmbed = new EmbedBuilder()
+            .setColor(Color.Danger)
+            .setDescription(`${Symbols.Error} The user was not found on the server.`)
+
+            const unknownMember = interaction.guild.members.cache.find(member => member.user.id === target.id);
+            if(!unknownMember) return await interaction.reply({ embeds: [unknownMemberEmbed], ephemeral: true });
             
+            const member = await interaction.guild?.members.fetch(target.id);
+                
             if(member) {
                 if(reason != null) {
                     try {
