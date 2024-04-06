@@ -11,8 +11,8 @@ export default class UnlockCommand extends Command {
             name: "unlock",
             description: "Unlocks a text channel for server members.",
             category: Category.Utilities,
-            userPermissions: PermissionFlagsBits.ManageChannels,
-            dmPermissions: true,
+            default_member_permissions: PermissionFlagsBits.ManageChannels,
+            dm_permissions: true,
             development: false,
             cooldown: 2,
             options: [
