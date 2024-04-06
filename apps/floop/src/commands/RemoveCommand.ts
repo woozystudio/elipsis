@@ -11,8 +11,8 @@ export default class SetupTicketsCommand extends Command {
             name: "remove",
             description: "Remove a user to the ticket.",
             category: Category.Utilities,
-            userPermissions: PermissionFlagsBits.ManageChannels,
-            dmPermissions: true,
+            default_member_permissions: PermissionFlagsBits.ManageChannels,
+            dm_permissions: true,
             development: false,
             cooldown: 2,
             options: [
