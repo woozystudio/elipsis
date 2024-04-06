@@ -11,8 +11,8 @@ export default class KickCommand extends Command {
             name: "kick",
             description: "Kicks a user from the server.",
             category: Category.Moderation,
-            userPermissions: PermissionFlagsBits.KickMembers,
-            dmPermissions: true,
+            default_member_permissions: PermissionFlagsBits.KickMembers,
+            dm_permissions: true,
             development: false,
             cooldown: 2,
             options: [

@@ -11,8 +11,8 @@ export default class SuggestionSetupCommand extends Command {
             name: "setup-suggestions",
             description: "Configures the suggestion system on the server.",
             category: Category.Utilities,
-            userPermissions: PermissionFlagsBits.ManageGuild,
-            dmPermissions: true,
+            default_member_permissions: PermissionFlagsBits.ManageGuild,
+            dm_permissions: true,
             development: false,
             cooldown: 2,
             options: [

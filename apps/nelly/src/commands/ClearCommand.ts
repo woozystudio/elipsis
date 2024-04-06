@@ -11,8 +11,8 @@ export default class LockCommand extends Command {
             name: "clear",
             description: "Delete messages from a channel.",
             category: Category.Utilities,
-            userPermissions: PermissionFlagsBits.ManageMessages,
-            dmPermissions: true,
+            default_member_permissions: PermissionFlagsBits.ManageMessages,
+            dm_permissions: true,
             development: false,
             cooldown: 2,
             options: [

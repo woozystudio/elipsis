@@ -11,8 +11,8 @@ export default class UntimeoutCommand extends Command {
             name: "untimeout",
             description: "Untimeout a user from the server.",
             category: Category.Moderation,
-            userPermissions: PermissionFlagsBits.ManageChannels,
-            dmPermissions: true,
+            default_member_permissions: PermissionFlagsBits.ManageChannels,
+            dm_permissions: true,
             development: false,
             cooldown: 2,
             options: [

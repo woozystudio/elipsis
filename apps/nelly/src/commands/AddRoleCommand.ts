@@ -11,8 +11,8 @@ export default class AddRoleCommand extends Command {
             name: "addrole",
             description: "Add a role to a user on the server.",
             category: Category.Utilities,
-            userPermissions: PermissionFlagsBits.ManageRoles,
-            dmPermissions: true,
+            default_member_permissions: PermissionFlagsBits.ManageRoles,
+            dm_permissions: true,
             development: false,
             cooldown: 2,
             options: [

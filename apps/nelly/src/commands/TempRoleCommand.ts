@@ -11,8 +11,8 @@ export default class TempRoleCommand extends Command {
             name: "temprole",
             description: "Temporarily add a role to a specific user.",
             category: Category.Moderation,
-            userPermissions: PermissionFlagsBits.BanMembers,
-            dmPermissions: true,
+            default_member_permissions: PermissionFlagsBits.BanMembers,
+            dm_permissions: true,
             development: false,
             cooldown: 2,
             options: [

@@ -8,8 +8,8 @@ export default interface ICommand {
     description: string;
     category: Category;
     options: object;
-    userPermissions: bigint;
-    dmPermissions: boolean;
+    default_member_permissions: bigint;
+    dm_permissions: boolean;
     cooldown: number;
     development: boolean;
 

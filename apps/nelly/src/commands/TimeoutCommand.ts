@@ -11,8 +11,8 @@ export default class TimeoutCommand extends Command {
             name: "timeout",
             description: "Timeout a user from the server.",
             category: Category.Moderation,
-            userPermissions: PermissionFlagsBits.ModerateMembers,
-            dmPermissions: true,
+            default_member_permissions: PermissionFlagsBits.ModerateMembers,
+            dm_permissions: true,
             development: false,
             cooldown: 2,
             options: [

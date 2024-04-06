@@ -11,8 +11,8 @@ export default class PollCommand extends Command {
             name: "poll",
             description: "Create a poll on the server.",
             category: Category.Utilities,
-            userPermissions: PermissionFlagsBits.UseApplicationCommands,
-            dmPermissions: true,
+            default_member_permissions: PermissionFlagsBits.UseApplicationCommands,
+            dm_permissions: true,
             development: false,
             cooldown: 2,
             options: [

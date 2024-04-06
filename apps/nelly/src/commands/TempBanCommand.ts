@@ -11,8 +11,8 @@ export default class TempBanCommand extends Command {
             name: "tempban",
             description: "Bans a user temporarily from the server.",
             category: Category.Moderation,
-            userPermissions: PermissionFlagsBits.BanMembers,
-            dmPermissions: true,
+            default_member_permissions: PermissionFlagsBits.BanMembers,
+            dm_permissions: true,
             development: false,
             cooldown: 2,
             options: [

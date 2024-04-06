@@ -10,8 +10,8 @@ export default class ChannelInfoCommand extends Command {
             name: "channelinfo",
             description: "Displays information about a channel.",
             category: Category.Information,
-            userPermissions: PermissionFlagsBits.UseApplicationCommands,
-            dmPermissions: true,
+            default_member_permissions: PermissionFlagsBits.UseApplicationCommands,
+            dm_permissions: true,
             development: false,
             cooldown: 2,
             options: [
