@@ -13,7 +13,7 @@ export default class TimeoutCommand extends Command {
             category: Category.Moderation,
             default_member_permissions: PermissionFlagsBits.ModerateMembers,
             dm_permissions: true,
-            development: true,
+            development: false,
             cooldown: 2,
             options: [
                 {
