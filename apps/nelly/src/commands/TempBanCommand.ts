@@ -5,7 +5,7 @@ import Category from "../enums/Category";
 import Color from "../enums/Color";
 import Symbols from "../enums/Symbols";
 
-export default class TimeoutCommand extends Command {
+export default class TempBanCommand extends Command {
     constructor(client: NellyClient) {
         super(client, {
             name: "tempban",
@@ -122,7 +122,7 @@ export default class TimeoutCommand extends Command {
                 }, durationMs);
             }         
         } else {
-            throw new Error("CommandError: An error occurred in Timeout command.")
+            throw new Error("CommandError: An error occurred in TempBan command.")
         }
     }
 }
