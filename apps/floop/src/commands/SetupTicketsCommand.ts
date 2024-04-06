@@ -12,8 +12,8 @@ export default class SetupTicketsCommand extends Command {
             name: "setup-tickets",
             description: "Configure the ticketing system on the server.",
             category: Category.Utilities,
-            userPermissions: PermissionFlagsBits.ManageGuild,
-            dmPermissions: true,
+            default_member_permissions: PermissionFlagsBits.ManageGuild,
+            dm_permissions: true,
             development: false,
             cooldown: 2,
             options: [
