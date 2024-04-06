@@ -12,8 +12,8 @@ export default class SuggestCommand extends Command {
             name: "suggest",
             description: "Creates a suggestion for the server.",
             category: Category.Utilities,
-            userPermissions: PermissionFlagsBits.UseApplicationCommands,
-            dmPermissions: true,
+            default_member_permissions: PermissionFlagsBits.UseApplicationCommands,
+            dm_permissions: true,
             development: false,
             cooldown: 2,
             options: [
