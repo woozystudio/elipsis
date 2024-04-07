@@ -81,7 +81,7 @@ export default class SetupTicketsCommand extends Command {
                 const guildChannel = interaction.guild.channels.cache.get(channel.id) as TextChannel;
     
                 await guildChannel.send({ embeds: [TicketsEmbed], components: [new ActionRowBuilder<ButtonBuilder>(Buttons)] });
-                interaction.reply({ content: `${Symbols.Success} The tickets panel has been successfully created.`, ephemeral: false });
+                interaction.reply({ content: `${Symbols.Success} The tickets panel has been successfully created.`, ephemeral: true });
                 
             } catch (err) {
                 console.error(err);
