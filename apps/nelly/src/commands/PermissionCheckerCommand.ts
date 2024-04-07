@@ -1,11 +1,11 @@
 import { ApplicationCommandOptionType, CacheType, ChatInputCommandInteraction, EmbedBuilder, PermissionFlagsBits } from "discord.js";
-import WorfClient from "../classes/Client";
+import NellyClient from "../classes/Client";
 import Command from "../classes/Command";
 import Category from "../enums/Category";
 import Color from "../enums/Color";
 
 export default class PermissionCheckerCommand extends Command {
-    constructor(client: WorfClient) {
+    constructor(client: NellyClient) {
         super(client, {
             name: "permissionchecker",
             description: "Displays the permissions of a server user.",

@@ -1,3 +1,3 @@
-import WorfClient from "./classes/Client";
+import NellyClient from "./classes/Client";
 
-(new WorfClient).Init();
+(new NellyClient).Init();
