@@ -3,7 +3,8 @@ import { model, Schema } from "mongoose";
 let applicationSchema = new Schema({
     GuildID: String,
     Channel: String,
-    Message: String,
+    Category: String,
+    Description: String,
     Questions: Array
 });
 
