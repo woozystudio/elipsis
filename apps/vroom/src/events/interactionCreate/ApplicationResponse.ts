@@ -18,7 +18,7 @@ export default class ApplicationResponse extends Event {
     async Execute(interaction: ChatInputCommandInteraction, buttons: ButtonInteraction) {
         if(interaction.isButton()) {
             const buttons = interaction as ButtonInteraction;
-            
+
             if(buttons.guild && buttons.member) {
                 const appId = Math.floor(Math.random() * 9000) + 10000;
         
@@ -48,9 +48,10 @@ export default class ApplicationResponse extends Event {
                         if(buttons.guild && buttons.member) {
                             const newTicketSchema = await Postulation.create({
                                 GuildID: buttons.guild.id,
+                                ChannelID: channel.id,
                                 Author: buttons.member.user.id,
                                 ApplicationID: appId,
-                                Aproved: "Waiting for Answer",
+                                Approved: "Waiting for Answer",
                             });
     
                             const TicketEmbed = new EmbedBuilder()
@@ -63,7 +64,13 @@ export default class ApplicationResponse extends Event {
                                 .setCustomId('close')
                                 .setLabel('Close')
                                 .setEmoji('🔒')
-                                .setStyle(ButtonStyle.Secondary)
+                                .setStyle(ButtonStyle.Secondary),
+
+                                new ButtonBuilder()
+                                .setCustomId('options')
+                                .setLabel('Options')
+                                .setEmoji('⚙')
+                                .setStyle(ButtonStyle.Secondary),
                             )
 
                             const UserEmbed = new EmbedBuilder()
