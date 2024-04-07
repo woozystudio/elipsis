@@ -4,7 +4,7 @@ let postulationSchema = new Schema({
     GuildID: String,
     ChannelID: String,
     ApplicationID: String,
-    Aproved: String,
+    Approved: String,
     Author: String,
     Closed: Boolean
 });
