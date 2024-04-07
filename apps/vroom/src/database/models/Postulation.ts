@@ -6,7 +6,8 @@ let postulationSchema = new Schema({
     ApplicationID: String,
     Approved: String,
     Author: String,
-    Closed: Boolean
+    Closed: Boolean,
+    Date: String
 });
 
 export default model("Postulation", postulationSchema);
