@@ -17,7 +17,10 @@
     "floop:build": "cd apps/floop && npm run build",
     "nelly:start": "cd apps/nelly && npm run start",
     "nelly:dev": "cd apps/nelly && npm run dev",
-    "nelly:build": "cd apps/nelly && npm run build"
+    "nelly:build": "cd apps/nelly && npm run build",
+    "vroom:start": "cd apps/vroom && npm run start",
+    "vroom:dev": "cd apps/vroom && npm run dev",
+    "vroom:build": "cd apps/vroom && npm run build"
   },
   "private": true,
   "type": "module",
