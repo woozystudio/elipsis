@@ -14,7 +14,7 @@ export default class SetupApplicationsCommand extends Command {
             category: Category.Utilities,
             default_member_permissions: PermissionFlagsBits.ManageGuild,
             dm_permissions: true,
-            development: true,
+            development: false,
             cooldown: 2,
             options: [
                 {
