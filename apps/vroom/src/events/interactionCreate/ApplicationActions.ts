@@ -23,7 +23,7 @@ export default class ApplicationActions extends Event {
                 if(!["close", "options"].includes(buttons.customId)) return;
 
                 const data = await Postulation.findOne({ GuildID: buttons.guild.id });
-                if(!buttons.guild.members.me?.permissions.has(PermissionFlagsBits.ManageChannels)) return buttons.reply({ content: `${Symbols.Error} The bot needs permission from \`ManageChannels\` to do this action.` });
+                if(!buttons.guild.members.me?.permissions.has(PermissionFlagsBits.ManageChannels)) return buttons.reply({ content: `${Symbols.Error} The bot needs permission from \`ManageChannels\` to do this action.`, ephemeral: true });
                 if(data) {
                     switch (buttons.customId) {
                         case "close":
