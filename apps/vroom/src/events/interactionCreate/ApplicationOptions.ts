@@ -27,7 +27,7 @@ export default class ApplicationOptions extends Event {
                 if(data && data.Author) {
                     switch (buttons.customId) {
                         case "approve":
-                            if (!data.ClaimedBy) return buttons.reply({ content: `${Symbols.Error} You must claim the application before it can be approved.` })
+                            if (!data.ClaimedBy) return buttons.reply({ content: `${Symbols.Error} You must claim the application before it can be approved.`, ephemeral: true })
                             if (!buttons.memberPermissions.has(PermissionFlagsBits.ManageChannels)) return buttons.reply({ content: `${Symbols.Error} You do not have permission to approve this application.`, ephemeral: true });
                             if (data.Approved === "Approved") return buttons.reply({ content: `${Symbols.Error} This application is already approved.`, ephemeral: true });
                             
@@ -51,7 +51,7 @@ export default class ApplicationOptions extends Event {
                             break;
                         
                         case "disapprove":
-                            if (!data.ClaimedBy) return buttons.reply({ content: `${Symbols.Error} You must claim the application before it can be disapproved.` })
+                            if (!data.ClaimedBy) return buttons.reply({ content: `${Symbols.Error} You must claim the application before it can be disapproved.`, ephemeral: true })
                             if (!buttons.memberPermissions.has(PermissionFlagsBits.ManageChannels)) return buttons.reply({ content: `${Symbols.Error} You do not have permission to disapprove this application.`, ephemeral: true });
                             if (data.Approved === "Disapproved") return buttons.reply({ content: `${Symbols.Error} This application is already disapprove.`, ephemeral: true });
                             
