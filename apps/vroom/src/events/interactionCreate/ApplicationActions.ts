@@ -20,7 +20,7 @@ export default class ApplicationActions extends Event {
             const buttons = interaction as ButtonInteraction;
 
             if(buttons.guild && buttons.member && buttons.channel && buttons.memberPermissions ) {
-                if(!["close", "options"].includes(buttons.customId)) return;
+                if(!["close", "options", "claim"].includes(buttons.customId)) return;
 
                 const data = await Postulation.findOne({ GuildID: buttons.guild.id });
                 if(!buttons.guild.members.me?.permissions.has(PermissionFlagsBits.ManageChannels)) return buttons.reply({ content: `${Symbols.Error} The bot needs permission from \`ManageChannels\` to do this action.`, ephemeral: true });
@@ -71,6 +71,22 @@ export default class ApplicationActions extends Event {
                             )
 
                             buttons.reply({ embeds: [OptionsEmbed], components: [new ActionRowBuilder<ButtonBuilder>(Buttons)] });
+                            break;
+
+                        case "claim":
+                            if (!buttons.memberPermissions.has(PermissionFlagsBits.ManageChannels)) return buttons.reply({ content: `${Symbols.Error} You are not allowed to perform the claiming action.`, ephemeral: true });
+                            if (data.Claimed == true) return buttons.reply({ content: `${Symbols.Error} This application is already claimed by <@${data.ClaimedBy}>.`, ephemeral: true });
+
+                            await Postulation.updateOne({ ChannelID: buttons.channel.id }, { Claimed: true, ClaimedBy: buttons.user.id });
+
+                            const ClaimedEmbed = new EmbedBuilder()
+                            .setDescription(`From now on, ${buttons.member} will take care of this request.`)
+                            .setColor(Color.Success)
+
+                            buttons.reply({ embeds: [ClaimedEmbed] });
+
+                            break;
+
                         default:
                             break;
                     }
