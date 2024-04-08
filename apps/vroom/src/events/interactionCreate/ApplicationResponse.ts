@@ -63,8 +63,8 @@ export default class ApplicationResponse extends Event {
     
                             const TicketEmbed = new EmbedBuilder()
                             .setTitle("Hi, Welcome to your postulation!")
-                            .setDescription("A staff member will be with you in a few moments, please be patient.\nWhile a staff member is assisting you, please comment your problem. Again, please be patient!")
-                            .setColor(Color.Success)
+                            .setDescription(`A member of the staff will be with you in a few moments, please be patient. While you wait, we ask you to answer the following questions:\n \n1. ${data.Questions[0]}\n2. ${data.Questions[1]}\n3. ${data.Questions[2]}`)
+                            .setColor(Color.Embed)
     
                             const button = new ActionRowBuilder().addComponents(
                                 new ButtonBuilder()
