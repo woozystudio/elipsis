@@ -23,11 +23,15 @@ export default class ApplicationResponse extends Event {
                 const appId = Math.floor(Math.random() * 9000) + 10000;
         
                 const data = await Application.findOne({ GuildID: buttons.guild.id });
+                const docs = await Postulation.findOne({ Author: buttons.member?.user.id  });
                 
                 if(!data) return;
                 if(buttons.customId != "openapp") return;
                 if(!buttons.guild.members.me?.permissions.has(PermissionFlagsBits.ManageChannels)) return buttons.reply({ content: `${Symbols.Error} The bot needs permission from \`ManageChannels\` to do this action.` });
-                
+                if(docs && buttons.member) {
+                    if(buttons.member.user.id === docs.Author) return await buttons.reply({ content: `${Symbols.Error} You already have an open application.` })
+                }
+
                 const everyoneRoleId = buttons.guild.roles.everyone;
                 try {
                     await buttons.guild.channels.create({
