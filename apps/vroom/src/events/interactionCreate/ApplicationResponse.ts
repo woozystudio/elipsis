@@ -29,7 +29,7 @@ export default class ApplicationResponse extends Event {
                 if(buttons.customId != "openapp") return;
                 if(!buttons.guild.members.me?.permissions.has(PermissionFlagsBits.ManageChannels)) return buttons.reply({ content: `${Symbols.Error} The bot needs permission from \`ManageChannels\` to do this action.` });
                 if(docs && buttons.member) {
-                    if(buttons.member.user.id === docs.Author) return await buttons.reply({ content: `${Symbols.Error} You already have an open application.` })
+                    if(buttons.member.user.id === docs.Author) return await buttons.reply({ content: `${Symbols.Error} You already have an open application.`, ephemeral: true })
                 }
 
                 const everyoneRoleId = buttons.guild.roles.everyone;
