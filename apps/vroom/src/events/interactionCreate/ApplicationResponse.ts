@@ -78,6 +78,12 @@ export default class ApplicationResponse extends Event {
                                 .setLabel('Options')
                                 .setEmoji('⚙')
                                 .setStyle(ButtonStyle.Secondary),
+
+                                new ButtonBuilder()
+                                .setCustomId('claim')
+                                .setLabel('Claim')
+                                .setEmoji('📌')
+                                .setStyle(ButtonStyle.Secondary),
                             )
 
                             const UserEmbed = new EmbedBuilder()
