@@ -46,12 +46,15 @@ export default class ApplicationResponse extends Event {
                         ]
                     }).then(async (channel) => {
                         if(buttons.guild && buttons.member) {
+                            const createdAt = Math.floor(channel.createdTimestamp / 1000);
+
                             const newTicketSchema = await Postulation.create({
                                 GuildID: buttons.guild.id,
                                 ChannelID: channel.id,
                                 Author: buttons.member.user.id,
                                 ApplicationID: appId,
                                 Approved: "Waiting for Answer",
+                                Date: createdAt
                             });
     
                             const TicketEmbed = new EmbedBuilder()
