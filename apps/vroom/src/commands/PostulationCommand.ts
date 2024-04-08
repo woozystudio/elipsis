@@ -32,12 +32,23 @@ export default class PostulationsCommand extends Command {
             )
             .setTimestamp()
 
+            const WaitingForAnswer = new EmbedBuilder()
+            .setTitle("Server Postulations")
+            .setColor(Color.Embed)
+            .setDescription("Check your status or your activity in the server applications.")
+            .addFields(
+                { name: 'Application Status', value: `Waiting for answer...` },
+                { name: 'Created at', value: `<t:${data?.Date}:F>` },
+            )
+            .setTimestamp()
+
             const Approved = new EmbedBuilder()
             .setTitle("Server Postulations")
             .setColor(Color.Success)
             .setDescription("Check your status or your activity in the server applications.")
             .addFields(
                 { name: 'Application Status', value: `<:checkmark:1219293026489339914> Approved` },
+                { name: 'Created at', value: `<t:${data?.Date}:F>` },
             )
             .setTimestamp()
 
@@ -47,12 +58,17 @@ export default class PostulationsCommand extends Command {
             .setDescription("Check your status or your activity in the server applications.")
             .addFields(
                 { name: 'Application Status', value: `<:crossmark:1219293029681201242> Disapproved` },
+                { name: 'Created at', value: `<t:${data?.Date}:F>` },
             )
             .setTimestamp()
 
             if(data?.Approved === undefined) {
 
                 await interaction.reply({ embeds: [NotFound] });
+
+            } else if(data.Approved === "Waiting for Answer") {
+
+                await interaction.reply({ embeds: [WaitingForAnswer] });
 
             } else if(data.Approved === "Approved") {
 
