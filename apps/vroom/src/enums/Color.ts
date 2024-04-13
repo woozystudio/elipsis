@@ -1,12 +1,12 @@
 enum Color {
     Embed = 0x2B2D31,
-    Danger = 0xf04747,
-    Severe = 0xfaa61a,
-    Warning = 0xFFD51C,
-    Success = 0x43b581,
-    Note = 0x1CA0FF,
-    Important = 0xB71CFF,
-    Sponsors = 0xFF1CE0,
+    Danger = 0xFC3E5C,
+    Severe = 0xF3693E,
+    Warning = 0xF4C13C,
+    Success = 0x43B87C,
+    Note = 0x5865F2,
+    Important = 0x9C84EF,
+    Sponsors = 0xFF72F7,
 }
 
 export default Color;

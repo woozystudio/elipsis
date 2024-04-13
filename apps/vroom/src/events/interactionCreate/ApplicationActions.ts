@@ -60,13 +60,13 @@ export default class ApplicationActions extends Event {
                                 new ButtonBuilder()
                                 .setCustomId('approve')
                                 .setLabel('Approve')
-                                .setEmoji('<:checkmark:1219293026489339914>')
+                                .setEmoji(`${Symbols.Success}`)
                                 .setStyle(ButtonStyle.Success),
 
                                 new ButtonBuilder()
                                 .setCustomId('disapprove')
                                 .setLabel('Disapprove')
-                                .setEmoji('<:crossmark:1219293029681201242>')
+                                .setEmoji(`${Symbols.Error}`)
                                 .setStyle(ButtonStyle.Danger),
                             )
 
