@@ -4,6 +4,7 @@ import Command from "../classes/Command";
 import Category from "../enums/Category";
 import Color from "../enums/Color";
 import Postulation from "../database/models/Postulation";
+import Symbols from "../enums/Symbols";
 
 export default class PostulationsCommand extends Command {
     constructor(client: VroomClient) {
@@ -47,7 +48,7 @@ export default class PostulationsCommand extends Command {
             .setColor(Color.Success)
             .setDescription("Check your status or your activity in the server applications.")
             .addFields(
-                { name: 'Application Status', value: `<:checkmark:1219293026489339914> Approved` },
+                { name: 'Application Status', value: `${Symbols.Success} Approved` },
                 { name: 'Created at', value: `<t:${data?.Date}:F>` },
             )
             .setTimestamp()
@@ -57,7 +58,7 @@ export default class PostulationsCommand extends Command {
             .setColor(Color.Danger)
             .setDescription("Check your status or your activity in the server applications.")
             .addFields(
-                { name: 'Application Status', value: `<:crossmark:1219293029681201242> Disapproved` },
+                { name: 'Application Status', value: `${Symbols.Error} Disapproved` },
                 { name: 'Created at', value: `<t:${data?.Date}:F>` },
             )
             .setTimestamp()
