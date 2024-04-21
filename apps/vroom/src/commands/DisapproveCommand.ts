@@ -14,7 +14,7 @@ export default class DisapproveCommand extends Command {
             category: Category.Utilities,
             default_member_permissions: PermissionFlagsBits.ManageChannels,
             dm_permissions: true,
-            development: true,
+            development: false,
             cooldown: 2,
             options: [
                 {
