@@ -84,14 +84,14 @@ export default class SuggestCommand extends Command {
                         });;
                     }
                     
-                    interaction.reply({ content: `${Symbols.Success} The suggestion system has been configured correctly!`, ephemeral: true });
+                    interaction.reply({ content: `${Symbols.Success} The suggestion has been sent successfully!`, ephemeral: true });
                 } else {
                     interaction.reply({ content: `${Symbols.Error} You have not configured the suggestion system.`, ephemeral: true });
                 }
             }
         } catch (err) {
             console.error(err);
-            interaction.reply({ content: `${Symbols.Error} There was an error configuring the suggestion system.`, ephemeral: true });
+            interaction.reply({ content: `${Symbols.Error} There was an error sending the suggestion.`, ephemeral: true });
         }
     }
 }
