@@ -43,7 +43,7 @@ export default class InteractionCreate extends Event {
                                 }
                             }, 5000)
 
-                            buttons.reply({ content: `${Symbols.Success} Your ticket is being prepared for closing.` });
+                            buttons.reply({ content: `${Symbols.Success} Your ticket is being prepared for closing.`, ephemeral: true });
 
                             break;
                         
